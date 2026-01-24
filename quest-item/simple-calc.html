@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>The simple calc</title>
+    <link rel="stylesheet" href="style.css" />
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        min-height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 20px;
+      }
+
+      h1 {
+        position: absolute;
+        top: 20px;
+        font-size: 32px;
+        color: white;
+        text-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+        letter-spacing: 2px;
+      }
+
+      section {
+        background: rgba(255, 255, 255, 0.95);
+        border-radius: 20px;
+        padding: 30px;
+        box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+        backdrop-filter: blur(10px);
+        max-width: 400px;
+        width: 100%;
+        animation: slideDown 0.5s ease-out;
+      }
+
+      @keyframes slideDown {
+        from {
+          opacity: 0;
+          transform: translateY(-30px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      .layar {
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        color: white;
+        font-size: 2.5em;
+        padding: 25px;
+        border-radius: 15px;
+        text-align: right;
+        margin-bottom: 25px;
+        min-height: 70px;
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;
+        word-wrap: break-word;
+        word-break: break-all;
+        box-shadow: inset 0 4px 15px rgba(0, 0, 0, 0.2);
+        font-weight: 600;
+      }
+
+      .angka,
+      .operator,
+      .hasil {
+        display: grid;
+        gap: 12px;
+        margin-bottom: 15px;
+      }
+
+      .tingka2,
+      .tingkat1 {
+        display: grid;
+        grid-template-columns: repeat(5, 1fr);
+        gap: 10px;
+      }
+
+      .operator {
+        display: grid;
+        grid-template-columns: repeat(5, 1fr);
+        gap: 10px;
+      }
+
+      .hasil {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 10px;
+      }
+
+      button {
+        padding: 18px;
+        font-size: 1.2em;
+        border: none;
+        border-radius: 12px;
+        cursor: pointer;
+        font-weight: 600;
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        text-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+      }
+
+      .angka-btn {
+        background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+        color: #333;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+      }
+
+      .angka-btn:hover {
+        background: linear-gradient(135deg, #c3cfe2 0%, #f5f7fa 100%);
+        transform: translateY(-3px);
+        box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+      }
+
+      .angka-btn:active {
+        transform: translateY(-1px);
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+      }
+
+      .operator_btn {
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        color: white;
+        box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
+      }
+
+      .operator_btn:hover {
+        background: linear-gradient(135deg, #764ba2 0%, #667eea 100%);
+        transform: translateY(-3px);
+        box-shadow: 0 8px 25px rgba(102, 126, 234, 0.6);
+      }
+
+      .operator_btn:active {
+        transform: translateY(-1px);
+        box-shadow: 0 2px 10px rgba(102, 126, 234, 0.4);
+      }
+
+      .hasil-btn {
+        background: linear-gradient(135deg, #84fab0 0%, #8fd3f4 100%);
+        color: #333;
+        grid-column: 1;
+        box-shadow: 0 4px 15px rgba(132, 250, 176, 0.4);
+        font-size: 1.4em;
+      }
+
+      .hasil-btn:hover {
+        background: linear-gradient(135deg, #8fd3f4 0%, #84fab0 100%);
+        transform: translateY(-3px);
+        box-shadow: 0 8px 25px rgba(132, 250, 176, 0.6);
+      }
+
+      .hasil-btn:active {
+        transform: translateY(-1px);
+        box-shadow: 0 2px 10px rgba(132, 250, 176, 0.4);
+      }
+
+      .clear-btn {
+        background: linear-gradient(135deg, #fa709a 0%, #fee140 100%);
+        color: #333;
+        grid-column: 2;
+        box-shadow: 0 4px 15px rgba(250, 112, 154, 0.4);
+        font-size: 1.4em;
+      }
+
+      .clear-btn:hover {
+        background: linear-gradient(135deg, #fee140 0%, #fa709a 100%);
+        transform: translateY(-3px);
+        box-shadow: 0 8px 25px rgba(250, 112, 154, 0.6);
+      }
+
+      .clear-btn:active {
+        transform: translateY(-1px);
+        box-shadow: 0 2px 10px rgba(250, 112, 154, 0.4);
+      }
+
+      @media (max-width: 480px) {
+        h1 {
+          font-size: 24px;
+          top: 10px;
+        }
+
+        section {
+          padding: 20px;
+        }
+
+        .layar {
+          font-size: 1.8em;
+          padding: 20px;
+          min-height: 60px;
+        }
+
+        button {
+          padding: 15px;
+          font-size: 1em;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Simple Calc</h1>
+    <section>
+      <div class="layar"></div>
+      <div class="operator">
+        <button class="operator_btn">+</button>
+        <button class="operator_btn">-</button>
+        <button class="operator_btn">x</button>
+        <button class="operator_btn">/</button>
+        <button class="operator_btn">%</button>
+      </div>
+      <div class="angka">
+        <div class="tingka2">
+          <button class="angka-btn">5</button>
+          <button class="angka-btn">6</button>
+          <button class="angka-btn">7</button>
+          <button class="angka-btn">8</button>
+          <button class="angka-btn">9</button>
+        </div>
+        <div class="tingkat1">
+          <button class="angka-btn">0</button>
+          <button class="angka-btn">1</button>
+          <button class="angka-btn">2</button>
+          <button class="angka-btn">3</button>
+          <button class="angka-btn">4</button>
+        </div>
+      </div>
+      <div class="hasil">
+        <button class="hasil-btn">=</button>
+        <button class="clear-btn">C</button>
+      </div>
+    </section>
+
+    <script>
+      // menangkap 1 elemen
+      const layar = document.querySelector(".layar");
+
+      // menangkap semua elemen .angka-btn dari html
+      const angka_btn = document.querySelectorAll(".angka-btn");
+
+      // menangkap semua operator
+      const operator_btn = document.querySelectorAll(".operator_btn");
+
+      // tombol clear
+      const tombolClear = document.querySelector(".clear-btn");
+
+      // tombol hasil
+      const tombolHasil = document.querySelector(".hasil-btn");
+
+      let currentInp = "";
+      let firstValue = null;
+      let operator = null;
+
+      angka_btn.forEach((btn) => {
+        btn.addEventListener("click", () => {
+          currentInp += btn.textContent;
+          layar.textContent = currentInp;
+        });
+      });
+
+      operator_btn.forEach((op) => {
+        op.addEventListener("click", () => {
+          firstValue = Number(currentInp);
+          operator = op.textContent;
+          currentInp = "";
+          layar.textContent = "";
+        });
+      });
+
+      function hitung(firstValue, operator, secondValue) {
+        switch (operator) {
+          case "+":
+            return firstValue + secondValue;
+
+          case "-":
+            return firstValue - secondValue;
+
+          case "x":
+            return firstValue * secondValue;
+
+          case "/":
+            return firstValue / secondValue;
+
+          case "%":
+            return firstValue % secondValue;
+
+          default:
+            return 0;
+        }
+      }
+
+      tombolHasil.addEventListener("click", () => {
+        const secondValue = Number(currentInp);
+        const result = hitung(firstValue, operator, secondValue);
+
+        layar.textContent = result;
+
+        // reset atau clear agar dapat menghitung kembali
+        currentInp = String(result);
+        firstValue = null;
+        operator = null;
+      });
+
+      tombolClear.addEventListener("click", () => {
+        currentInp = "";
+        firstValue = null;
+        operator = null;
+        layar.textContent = "";
+      });
+    </script>
+  </body>
+</html>

@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Project Film Example</title>
+</head>
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+
+    body {
+        background: linear-gradient(135deg, #0f0f1e 0%, #1a1a2e 50%, #16213e 100%);
+        color: #e0e0e0;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        min-height: 100vh;
+        padding: 40px 20px;
+    }
+
+    h2 {
+        text-align: center;
+        font-size: 2.5rem;
+        margin-bottom: 50px;
+        color: #ffffff;
+        text-shadow: 0 0 20px rgba(100, 200, 255, 0.3);
+        font-weight: 700;
+        letter-spacing: 2px;
+    }
+
+    .grid-container {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: 30px;
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 20px;
+    }
+
+    .card {
+        background: linear-gradient(145deg, #1e1e2f 0%, #2a2a4e 100%);
+        border-radius: 16px;
+        overflow: hidden;
+        transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        border: 1px solid rgba(100, 200, 255, 0.2);
+        box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+        cursor: pointer;
+        backdrop-filter: blur(10px);
+    }
+
+    .card:hover {
+        transform: translateY(-12px) scale(1.02);
+        box-shadow: 0 20px 50px rgba(100, 200, 255, 0.3);
+        border: 1px solid rgba(100, 200, 255, 0.5);
+    }
+
+    .card h3 {
+        padding: 20px 20px 10px 20px;
+        font-size: 1.4rem;
+        color: #64c8ff;
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+    }
+
+    .card img {
+        width: 100%;
+        height: 200px;
+        object-fit: cover;
+        display: block;
+        filter: brightness(0.9) contrast(1.1);
+        transition: filter 0.3s ease;
+    }
+
+    .card:hover img {
+        filter: brightness(1.1) contrast(1.2);
+    }
+
+    .text-item {
+        padding: 20px;
+        background: rgba(0, 0, 0, 0.3);
+    }
+
+    .gabut {
+        margin-bottom: 15px;
+    }
+
+    .gabut p {
+        font-size: 0.95rem;
+        margin-bottom: 8px;
+        color: #b0b0d0;
+    }
+
+    .gabut p::before {
+        content: attr(data-label);
+        color: #64c8ff;
+        font-weight: 600;
+    }
+
+    .btn {
+        display: inline-block;
+        padding: 12px 30px;
+        background: linear-gradient(135deg, #64c8ff 0%, #4da8d9 100%);
+        color: #000;
+        text-decoration: none;
+        border-radius: 8px;
+        font-weight: 600;
+        font-size: 0.95rem;
+        transition: all 0.3s ease;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        box-shadow: 0 4px 15px rgba(100, 200, 255, 0.3);
+        width: 100%;
+        text-align: center;
+        border: none;
+        cursor: pointer;
+    }
+
+    .btn:hover {
+        background: linear-gradient(135deg, #4da8d9 0%, #64c8ff 100%);
+        box-shadow: 0 8px 25px rgba(100, 200, 255, 0.5);
+        transform: translateY(-2px);
+    }
+
+    .btn:active {
+        transform: translateY(0);
+    }
+
+    @media (max-width: 768px) {
+        h2 {
+            font-size: 1.8rem;
+            margin-bottom: 30px;
+        }
+
+        .grid-container {
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 20px;
+        }
+
+        .card h3 {
+            font-size: 1.1rem;
+        }
+    }
+</style>
+<body>
+
+    <h2>Daftar Film Populer</h2>
+    <div id="container-film" class="grid-container"></div>
+
+    <script>
+        // <iframe src="https://vidsrcme.ru/embed/movie?imdb=tt3741700" style="width: 100%; height: 100%;" frameborder="0" referrerpolicy="origin" allowfullscreen></iframe>
+    
+    // 1. Siapkan data (biasanya didapat dari database/API)
+    const daftarfilm = [
+        { judul: "Ngawi Land", img: './img-looping/img-h.webp', genre: "Gelap", rating: 4.5, tombol: 'Play', link: 'https://vidsrcme.ru/embed/movie?imdb=tt3741700' },
+        { judul: "Ejen Bromo", img: './img-looping/img-a.webp', genre: "Romantis", rating: 4.2, tombol: 'Play', link: 'https://www.youtube.com/shorts/fCGPc9dEDkw' },
+        { judul: "Jogja Rim", img: './img-looping/img-b.webp', genre: "Terang", rating: 4.0, tombol: 'Play', link: 'https://www.youtube.com/shorts/fCGPc9dEDkw' },
+        { judul: "KarangZila", img: './img-looping/img-c.webp', genre: "Pagi", rating: 4.7, tombol: 'Play', link: 'https://www.youtube.com/shorts/fCGPc9dEDkw' },
+        { judul: "War of Bekasi", img: './img-looping/img-d.webp', genre: "Siang", rating: 4.3, tombol: 'Play', link: 'https://www.youtube.com/shorts/fCGPc9dEDkw' },
+        { judul: "Mining the Kalteng", img: './img-looping/img-e.webp', genre: "Malam", rating: 4.8, tombol: 'Play', link: 'https://www.youtube.com/shorts/fCGPc9dEDkw' },
+        { judul: "Danau Pulau", img: './img-looping/img-f.webp', genre: "Sad", rating: 4.1, tombol: 'Play', link: 'https://www.youtube.com/shorts/fCGPc9dEDkw' },
+        { judul: "Raja Empat", img: './img-looping/img-g.webp', genre: "Drama", rating: 4.6, tombol: 'Play', link: 'https://www.youtube.com/shorts/fCGPc9dEDkw' }
+    ];
+    
+    // 2. Tangkap elemen kontainer dari HTML
+    const wadah = document.getElementById('container-film');
+    
+    // 3. Proses Looping
+    daftarfilm.forEach(item => {
+        // Buat elemen div untuk card
+        const card = document.createElement('div');
+        card.classList.add('card');
+    
+        // Isi konten ke dalam card
+        card.innerHTML = `
+        <h3>${item.judul}</h3>
+            <img src='${item.img}'>
+            <div class="text-item">
+                    <div class="gabut">
+                        <p>Genre : ${item.genre}</p>
+                        <p>Rating : ${item.rating}</p>
+                    </div>
+                    <a href="${item.link}" class="btn" target='_blank'>${item.tombol}</a>
+            </div>
+        `;
+    
+        // Masukkan card ke dalam wadah utama
+        wadah.appendChild(card);
+    });
+    </script>
+    
+</body>
+</html>
+

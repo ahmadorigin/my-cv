@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <title>Loop Data Example</title>
+</head>
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+
+    :root {
+        --bg-primary: #0f1419;
+        --bg-secondary: #1a1f2e;
+        --text-primary: #e4e6eb;
+        --text-secondary: #b0b3b8;
+        --accent: #00d4ff;
+        --accent-hover: #00a8cc;
+        --border: #2a3142;
+    }
+
+    @media (prefers-color-scheme: light) {
+        :root {
+            --bg-primary: #ffffff;
+            --bg-secondary: #f5f5f5;
+            --text-primary: #1a1a1a;
+            --text-secondary: #666666;
+            --accent: #0088ff;
+            --accent-hover: #0066cc;
+            --border: #e0e0e0;
+        }
+    }
+
+    body {
+        background-color: var(--bg-primary);
+        color: var(--text-primary);
+        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+        font-size: 16px;
+        line-height: 1.6;
+        padding: 20px;
+        transition: all 0.3s ease;
+    }
+
+    h2 {
+        margin-bottom: 30px;
+        font-size: 28px;
+        font-weight: 600;
+        background: linear-gradient(135deg, var(--accent) 0%, #00f0ff 100%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+    }
+
+    .grid-container {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+        gap: 20px;
+        max-width: 1400px;
+        margin: 0 auto;
+    }
+
+    .card {
+        background: var(--bg-secondary);
+        border: 1px solid var(--border);
+        padding: 0;
+        border-radius: 12px;
+        overflow: hidden;
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        cursor: pointer;
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+    }
+
+    .card:hover {
+        transform: translateY(-8px);
+        box-shadow: 0 8px 32px rgba(0, 212, 255, 0.2);
+        border-color: var(--accent);
+    }
+
+    .card img {
+        width: 100%;
+        height: 200px;
+        object-fit: cover;
+        transition: transform 0.3s ease;
+    }
+
+    .card:hover img {
+        transform: scale(1.05);
+    }
+
+    .card h3 {
+        color: var(--text-primary);
+        padding: 16px 16px 8px;
+        font-size: 18px;
+        font-weight: 600;
+        margin: 0;
+    }
+
+    .card p {
+        color: var(--text-secondary);
+        padding: 0 16px 16px;
+        margin: 0;
+        font-size: 14px;
+    }
+</style>
+<body>
+
+    <h2>Daftar Destinasi Populer</h2>
+    <div id="container-wisata" class="grid-container"></div>
+
+    <script>
+    
+    // 1. Siapkan data (biasanya didapat dari database/API)
+    const daftarWisata = [
+        { nama: "Candi Borobudur", lokasi: "Magelang", img: './img-looping/img-h.webp' },
+        { nama: "Pantai Parangtritis", lokasi: "Yogyakarta", img: './img-looping/img-b.webp' },
+        { nama: "Tawangmangu", lokasi: "Karanganyar", img: './img-looping/img-c.webp' },
+        { nama: "Gunung Bromo", lokasi: "Probolinggo", img: './img-looping/img-d.webp' },
+        { nama: "Pulau Komodo", lokasi: "NTT", img: './img-looping/img-e.webp' },
+        { nama: "Danau Toba", lokasi: "Sumatera Utara", img: './img-looping/img-f.webp' },
+        { nama: "Raja Ampat", lokasi: "Papua Barat", img: './img-looping/img-g.webp' }
+    ];
+    
+    // 2. Tangkap elemen kontainer dari HTML
+    const wadah = document.getElementById('container-wisata');
+    
+    // 3. Proses Looping
+    daftarWisata.forEach(item => {
+        // Buat elemen div untuk card
+        const card = document.createElement('div');
+        card.classList.add('card');
+    
+        // Isi konten ke dalam card
+        card.innerHTML = `
+            <img src='${item.img}'>
+            <h3>${item.nama}</h3>
+            <p>📍 ${item.lokasi}</p>
+        `;
+    
+        // Masukkan card ke dalam wadah utama
+        wadah.appendChild(card);
+    });
+    </script>
+    
+</body>
+</html>
+

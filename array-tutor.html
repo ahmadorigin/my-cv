@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <title>Array tutor</title>
+      <style>
+
+      </style>
+</head>
+<body>
+      <h1>Penampilkan hari & bulan</h1>
+
+      <p id="harian"></p>
+      <p id="bulanan"></p>
+
+      <script>
+            const hari = ['Senin', 'Selasa', 'Rabu', "Kamis", 'Jum"at', 'Sabtu', 'Ahad'];
+            const bulan = ['Januari', 'Februari', 'Maret', 'April', 'Mei', 'Juni', 'July', 'Agustus', 'September', 'Oktober', 'November', 'Desember'];
+
+            document.querySelector('#harian').textContent += `${hari} Jumlah hari dalam sepekan adalah ${hari.length}`;
+            document.querySelector('#bulanan').textContent += `${bulan} Jumlah hari dalam sepekan adalah ${bulan.length}`;
+      </script>
+
+      
+</body>
+</html>

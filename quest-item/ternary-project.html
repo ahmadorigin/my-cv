@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Ternary</title>
+    <style>
+      body {
+        font-family: poppins, sans-serif;
+        margin: 20px;
+        background-color: black;
+        color: #f4f4f4;
+      }
+
+      h2 {
+        color: #444;
+      }
+
+      p {
+        font-size: 18px;
+      }
+    </style>
+  </head>
+  <body>
+    <h2>Contoh Penggunaan Operator Ternary</h2>
+    <p>Menentukan apakah seseorang lulus berdasarkan usianya:</p>
+    <!-- <input type="text" id="name" placeholder="Masukkan Nama..." />
+    <input type="number" id="nilai" placeholder="Masukkan nilai..." /> -->
+    <button onclick="checkGrade()">Cek</button>
+    <p id="demo"></p>
+
+    <script>
+      function checkGrade() {
+        let point = prompt("Masukkan nilai anda:");
+        let name = prompt("Masukkan nama anda:");
+        let text = point >= 70 ? "LULUS" : "TIDAK LULUS";
+
+        document.getElementById(
+          "demo"
+        ).innerHTML = `Halo ${name}, dengan nilai ${point} Anda dinyatakan ${text}.`;
+      }
+    </script>
+  </body>
+</html>

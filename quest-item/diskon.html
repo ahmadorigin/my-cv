@@ -1,0 +1,382 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Cyberpunk Login Portal</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        background: linear-gradient(
+          135deg,
+          #0a0e27 0%,
+          #0f1b2e 50%,
+          #1a0a2e 100%
+        );
+        min-height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-family: "Arial", sans-serif;
+        overflow: hidden;
+        position: relative;
+      }
+
+      body::before {
+        content: "";
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: repeating-linear-gradient(
+          0deg,
+          rgba(0, 255, 150, 0.03) 0px,
+          rgba(0, 255, 150, 0.03) 1px,
+          transparent 1px,
+          transparent 2px
+        );
+        pointer-events: none;
+        z-index: 1;
+        animation: scan 8s linear infinite;
+      }
+
+      @keyframes scan {
+        0% {
+          transform: translateY(0);
+        }
+        100% {
+          transform: translateY(10px);
+        }
+      }
+
+      .container {
+        position: relative;
+        z-index: 2;
+        width: 100%;
+        max-width: 450px;
+        padding: 0 20px;
+      }
+
+      .login-box {
+        background: linear-gradient(
+          145deg,
+          rgba(15, 27, 46, 0.9) 0%,
+          rgba(26, 10, 46, 0.9) 100%
+        );
+        border: 2px solid rgba(0, 255, 150, 0.3);
+        border-radius: 2px;
+        padding: 50px 40px;
+        box-shadow:
+          0 0 20px rgba(0, 255, 150, 0.2),
+          inset 0 0 20px rgba(0, 255, 150, 0.05),
+          0 0 40px rgba(100, 50, 255, 0.1);
+        backdrop-filter: blur(10px);
+        border-radius: 10px;
+      }
+
+      .login-box::before {
+        content: "";
+        position: absolute;
+        top: -2px;
+        left: -2px;
+        right: -2px;
+        bottom: -2px;
+        background: linear-gradient(45deg, #00ff96, #6432ff, #ff00ff, #00ff96);
+        background-size: 300% 300%;
+        border-radius: 2px;
+        z-index: -1;
+        opacity: 0;
+        animation: glow 3s ease-in-out infinite;
+      }
+
+      /* @keyframes glow {
+                  0%, 100% { opacity: 0; }
+                  50% { opacity: 0.3; }
+            } */
+
+      .title {
+        text-align: center;
+        margin-bottom: 40px;
+      }
+
+      .title h1 {
+        color: #00ff96;
+        font-size: 2rem;
+        text-transform: uppercase;
+        letter-spacing: 3px;
+        text-shadow:
+          0 0 10px rgba(0, 255, 150, 0.5),
+          0 0 20px rgba(0, 255, 150, 0.3);
+        margin-bottom: 8px;
+        font-weight: 700;
+      }
+
+      .title p {
+        color: #6432ff;
+        font-size: 0.9rem;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+      }
+
+      .form-group {
+        margin-bottom: 25px;
+        position: relative;
+      }
+
+      .form-group label {
+        display: block;
+        color: #00ff96;
+        font-size: 0.85rem;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        margin-bottom: 8px;
+        font-weight: 600;
+      }
+
+      .form-group input {
+        width: 100%;
+        padding: 12px 15px;
+        background: rgba(0, 255, 150, 0.05);
+        border: 1px solid rgba(0, 255, 150, 0.3);
+        border-radius: 5px;
+        color: #ffffff;
+        font-size: 0.95rem;
+        transition: all 0.3s ease;
+        font-family: "Courier New", monospace;
+      }
+
+      .form-group input::placeholder {
+        color: rgba(0, 255, 150, 0.5);
+      }
+
+      .form-group input:focus {
+        outline: none;
+        background: rgba(0, 255, 150, 0.1);
+        border-color: rgba(0, 255, 150, 0.8);
+        box-shadow: 0 0 15px rgba(0, 255, 150, 0.3);
+      }
+
+      .login-btn {
+        width: 100%;
+        padding: 14px;
+        background: linear-gradient(135deg, #00ff96 0%, #6432ff 100%);
+        border: 1px solid rgba(0, 255, 150, 0.5);
+        border-radius: 5px;
+        color: #0a0e27;
+        font-size: 1rem;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 2px;
+        cursor: pointer;
+        border-radius: 2px;
+        transition: all 0.3s ease;
+        box-shadow: 0 0 20px rgba(0, 255, 150, 0.3);
+      }
+
+      .login-btn:hover {
+        box-shadow:
+          0 0 30px rgba(0, 255, 150, 0.6),
+          inset 0 0 20px rgba(0, 255, 150, 0.2);
+        transform: translateY(-2px);
+      }
+
+      .login-btn:active {
+        transform: translateY(0);
+      }
+
+      .output-box {
+        margin-top: 30px;
+        padding: 20px;
+        background: rgba(0, 255, 150, 0.05);
+        border: 1px solid rgba(0, 255, 150, 0.3);
+        border-radius: 2px;
+        min-height: 60px;
+        display: none;
+      }
+
+      .output-box.active {
+        display: block;
+        animation: slideIn 0.3s ease;
+      }
+
+      @keyframes slideIn {
+        from {
+          opacity: 0;
+          transform: translateY(-10px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      .output-box p {
+        color: #00ff96;
+        font-size: 0.9rem;
+        line-height: 1.6;
+        font-family: "Courier New", monospace;
+        word-break: break-word;
+      }
+
+      .status-indicator {
+        display: inline-block;
+        width: 10px;
+        height: 10px;
+        background: #00ff96;
+        border-radius: 50%;
+        margin-right: 8px;
+        animation: blink 1s infinite;
+      }
+
+      @keyframes blink {
+        0%,
+        49%,
+        100% {
+          opacity: 1;
+        }
+        50%,
+        99% {
+          opacity: 0.3;
+        }
+      }
+
+      @media (max-width: 480px) {
+        .login-box {
+          padding: 40px 25px;
+        }
+
+        .title h1 {
+          font-size: 1.5rem;
+        }
+
+        .form-group input {
+          font-size: 0.9rem;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="login-box">
+        <div class="title">
+          <h1>⚡ ACCESS PORTAL</h1>
+          <p>[ CYBERPUNK LOGIN ]</p>
+        </div>
+
+        <form onsubmit="discount(event)">
+
+
+          <div class="form-group">
+            <label for="nameProduct">🔐 Nama Product</label>
+            <input
+              type="text"
+              id="nameProduct"
+              placeholder="Enter product name..."
+              required
+            />
+          </div>
+
+          <div class="form-group">
+            <label for="hargaProduct">💰 Harga Ori</label>
+            <input
+              type="number"
+              id="hargaProduct"
+              placeholder="Enter price..."
+              required
+            />
+          </div>
+
+          <div class="form-group">
+            <label for="kodeProduct">🎟️ Kode Diskon</label>
+            <input
+              type="text"
+              id="kodeProduct"
+              placeholder="e.g., DISC10, DISC20, DISC30"
+              required
+            />
+          </div>
+
+          <button type="submit" class="login-btn" >
+            Hitung Diskon
+          </button>
+        </form>
+
+        <div id="output" class="output-box">
+          <p>
+            <span class="status-indicator"></span><span id="result-text"></span>
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      function discount(e) {
+            e.preventDefault();
+
+            const nameProduct = document.getElementById("nameProduct").value;
+            const hargaProduct = document.getElementById("hargaProduct").value;
+            const kodeProduct = document.getElementById("kodeProduct").value;
+            
+            console.log(nameProduct, hargaProduct, kodeProduct);
+
+            const nilaiDiskon = hitungDiskon(hargaProduct, kodeProduct);
+
+            console.log(nilaiDiskon)
+      
+            // function inputValidasi() {
+            //   if (nameProduct == "") {
+            //     alert("Nama Product tidak boleh kosong!");
+            //   }
+            //   if (hargaProduct == "") {
+            //     alert("Harga Product tidak boleh kosong!");
+            //   }
+            //   if (kodeProduct == "") {
+            //     alert("Kode Product tidak boleh kosong!");
+            //   }
+            // }
+      
+            function hitungDiskon(harga, kode) {
+              let nilaiDiskon = 0;
+      
+              if (kode == "D10") {
+                return harga * 0.1;
+              } else if (kode == "D20") {
+                return harga * 0.2;
+              } else if (kode == "D30") {
+                return harga * 0.3;
+              } else if (kode == "D40") {
+                  return harga * 0.4;
+              } else if (kode == "D50") {
+                  return harga * 0.5;
+              } else {
+                return nilaiDiskon = 0;
+              }
+            }
+      
+            const resultText = document.getElementById("result-text");
+            const outputBox = document.getElementById("output");
+      
+            if (nilaiDiskon > 0) {
+              const hargaAkhir = hargaProduct - nilaiDiskon;
+              resultText.innerHTML = `Produk <strong>${nameProduct}</strong> mendapatkan diskon sebesar <strong>Rp ${nilaiDiskon.toFixed(
+                2
+              )}</strong>. Harga akhir setelah diskon adalah <strong>Rp ${hargaAkhir.toFixed(
+                2
+              )}</strong>.`;
+            } else {
+              resultText.innerHTML = `Kode diskon tidak valid. Produk <strong>${nameProduct}</strong> tidak mendapatkan diskon. Harga tetap <strong>Rp ${parseFloat(
+                hargaProduct
+              ).toFixed(2)}</strong>.`;
+            }
+
+      }
+
+    </script>
+  </body>
+</html>

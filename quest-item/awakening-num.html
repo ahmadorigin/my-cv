@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>JS Hello</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: "Poppins", "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+        text-align: center;
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        min-height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 20px;
+      }
+
+      button {
+        margin: 8px;
+        padding: 15px 25px;
+        font-size: 16px;
+        font-weight: 600;
+        border: none;
+        cursor: pointer;
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        border-radius: 12px;
+      }
+
+      button:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+      }
+
+      button:active {
+        transform: translateY(0);
+      }
+
+      .halo {
+        text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #e60073,
+          0 0 40px #e60073, 0 0 50px #e60073, 0 0 60px #e60073, 0 0 70px #e60073;
+      }
+
+      .lamp {
+        display: none;
+      }
+
+      .awakening-num {
+        background: rgba(255, 255, 255, 0.95);
+        border-radius: 24px;
+        padding: 40px;
+        box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+        max-width: 400px;
+        backdrop-filter: blur(10px);
+      }
+
+      .awakening-num h1 {
+        color: #333;
+        margin-bottom: 30px;
+        font-size: 28px;
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+      }
+
+      #layar {
+        margin: 0 auto 30px;
+        font-size: 28px;
+        font-weight: bold;
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        color: #fff;
+        border-radius: 16px;
+        border: none;
+        text-align: center;
+        padding: 25px;
+        min-height: 80px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        box-shadow: 0 8px 32px rgba(102, 126, 234, 0.3);
+        word-break: break-all;
+      }
+
+      table {
+        margin: 0 auto;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 5px;
+      }
+
+      table tr {
+        display: flex;
+        gap: 5px;
+      }
+
+      table button {
+        background: #f0f0f0;
+        color: #333;
+        font-weight: 700;
+        width: 70px;
+        height: 70px;
+        border-radius: 14px;
+        font-size: 18px;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+      }
+
+      table button:hover {
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        color: white;
+        box-shadow: 0 8px 24px rgba(102, 126, 234, 0.4);
+      }
+    </style>
+  </head>
+  <body>
+    <div class="lamp">
+      <h1 id="halo">Hello, World!</h1>
+      <button
+        type="button"
+        onclick="document.getElementById('halo').innerHTML = 'Hidup'"
+      >
+        ON
+      </button>
+      <button
+        type="button"
+        onclick="document.getElementById('halo').innerHTML = 'Mati'"
+      >
+        OFF
+      </button>
+    </div>
+    <div class="awakening-num">
+      <h1>Awakening Num</h1>
+      <div id="layar"></div>
+      <table>
+        <tr>
+          <td>
+            <button
+              type="button"
+              onclick="document.getElementById('layar').innerHTML = '1'"
+            >
+              1
+            </button>
+          </td>
+          <td>
+            <button
+              type="button"
+              onclick="document.getElementById('layar').innerHTML = '2'"
+            >
+              2
+            </button>
+          </td>
+          <td>
+            <button
+              type="button"
+              onclick="document.getElementById('layar').innerHTML = '3'"
+            >
+              3
+            </button>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <button
+              type="button"
+              onclick="document.getElementById('layar').innerHTML = '4'"
+            >
+              4
+            </button>
+          </td>
+          <td>
+            <button
+              type="button"
+              onclick="document.getElementById('layar').innerHTML = '5'"
+            >
+              5
+            </button>
+          </td>
+          <td>
+            <button
+              type="button"
+              onclick="document.getElementById('layar').innerHTML = '6'"
+            >
+              6
+            </button>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <button
+              type="button"
+              onclick="document.getElementById('layar').innerHTML = '7'"
+            >
+              7
+            </button>
+          </td>
+          <td>
+            <button
+              type="button"
+              onclick="document.getElementById('layar').innerHTML = '8'"
+            >
+              8
+            </button>
+          </td>
+          <td>
+            <button
+              type="button"
+              onclick="document.getElementById('layar').innerHTML = '9'"
+            >
+              9
+            </button>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <button
+              type="button"
+              onclick="document.getElementById('layar').innerHTML = '#'"
+            >
+              #
+            </button>
+          </td>
+          <td>
+            <button
+              type="button"
+              onclick="document.getElementById('layar').innerHTML = '0'"
+            >
+              0
+            </button>
+          </td>
+          <td>
+            <button
+              type="button"
+              onclick="document.getElementById('layar').innerHTML = '*'"
+            >
+              *
+            </button>
+          </td>
+        </tr>
+      </table>
+    </div>
+  </body>
+</html>
