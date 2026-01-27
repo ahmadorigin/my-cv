@@ -1,0 +1,122 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Array tutor</title>
+    <style>
+      * {
+            box-sizing: border-box;
+      }
+      /* CSS Inline/Internal */
+      body {
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        background-color: #f4f7f6;
+        color: #333;
+        padding: 40px;
+        line-height: 1.6;
+      }
+
+      h1 {
+        color: #2c3e50;
+        border-bottom: 2px solid #3498db;
+        padding-bottom: 10px;
+      }
+
+      p {
+        background: #ffffff;
+        padding: 15px;
+        border-radius: 8px;
+        box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        margin-bottom: 15px;
+        height: auto;
+
+      }
+
+      #santri {
+        border-left: 5px solid #e74c3c; /* Warna merah untuk daftar santri */
+        font-weight: bold;
+      }
+
+      #ket {
+        background-color: #2ecc71;
+        color: white;
+        padding: 10px 20px;
+        display: inline-block;
+        border-radius: 50px;
+        font-size: 1.2rem;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Penampilkan Ascending & Descending & Posisi ke-56</h1>
+
+    <p id="ascending"></p>
+    <p id="descending"></p>
+    <!-- <p id="posisiIndex"></p> -->
+    <h2 id="ket"></h2>
+
+    <!-- <script>
+      const hari = [
+        "Senin",
+        "Selasa",
+        "Rabu",
+        "Kamis",
+        'Jum"at',
+        "Sabtu",
+        "Ahad",
+      ];
+      const bulan = [
+        "Januari",
+        "Februari",
+        "Maret",
+        "April",
+        "Mei",
+        "Juni",
+        "July",
+        "Agustus",
+        "September",
+        "Oktober",
+        "November",
+        "Desember",
+      ];
+      const santri = [
+            'Fakhri',
+            'Mumtaz',
+            'Lathif',
+            'Ngawi',
+            'Naufal',
+            'Jundi',
+            'Jabir',
+            'Fadly'
+      ];
+
+      let posisiNgawi = santri.indexOf('Ngawi') + 1;
+      
+      hari.sort(); // method yang mengurutkan dari abjad huruf
+      bulan.sort();
+      santri.reverse();
+
+      document.querySelector("#harian").textContent +=
+        `${hari.join(', ')} Jumlah hari dalam setahun adalah ${hari.length}`;
+      document.querySelector("#bulanan").textContent +=
+        `${bulan.join(', ')} Jumlah Bulan dalam sepekan adalah ${bulan.length}`;
+      document.querySelector('#santri').textContent = santri.join(', ');
+      document.querySelector('#ket').textContent = `Posisi ngawi ada di bangku ke-${posisiNgawi}`;
+      </script> -->
+
+      <script>
+            const numbers = [23, 5, 100, 56, 9, 13, 37, 10, 1];
+
+            const posisi56 = numbers.indexOf(56) + 1 ;
+            document.querySelector('#ket').textContent = ("Array 56 adalah barisan ke-" +  posisi56);
+
+            const ascending = numbers.sort((a, b) => a - b);
+            document.querySelector('#ascending').textContent = ("Ascending : " +  ascending.join(', '));
+
+            const descending = numbers.reverse();
+            document.querySelector('#descending').textContent = ("Descending : " +  descending.join(',  '));
+
+      </script>
+  </body>
+</html>
