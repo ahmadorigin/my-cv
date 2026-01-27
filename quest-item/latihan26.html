@@ -1,0 +1,147 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Pengelola data santri</title>
+    <style>
+      * {
+        box-sizing: border-box;
+      }
+      /* CSS Inline/Internal */
+      body {
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+        background-color: #f4f7f6;
+        color: #333;
+        padding: 40px;
+        line-height: 1.6;
+      }
+
+      h1 {
+        color: #2c3e50;
+        border-bottom: 2px solid #3498db;
+        padding-bottom: 10px;
+      }
+
+      p {
+        background: #ffffff;
+        padding: 15px;
+        border-radius: 8px;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        margin-bottom: 15px;
+        height: auto;
+      }
+
+      #santri {
+        border-left: 5px solid #e74c3c; /* Warna merah untuk daftar santri */
+        font-weight: bold;
+      }
+
+      #ket {
+        background-color: #2ecc71;
+        color: white;
+        padding: 10px 20px;
+        display: inline-block;
+        border-radius: 50px;
+        font-size: 1.2rem;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Pengelola Data Santri</h1>
+    <p class="demo">
+      <strong>Mengurutkan santri berdasarkan nilai tertinggi : <br /></strong>
+    </p>
+    <p class="demo2">
+      <strong>Mengurutkan santri berdasarkan nama alfabetis : <br /></strong>
+    </p>
+    <p class="demo3">
+      <strong>Mencari keberadaan Core of The Core (Mumtaz) : <br /></strong>
+    </p>
+    <p class="demo4">
+      <strong>Mencari santri dengan nilai diatas 85 : <br /></strong>
+    </p>
+    <p class="demo5">
+      <strong>Penyisipan santri baru 'Ibrahim' dengan nilai 80 : <br /></strong>
+    </p>
+
+    <script>
+      const santri = [
+        {
+          nama: "Alif",
+          point: 85,
+        },
+        {
+          nama: "Shofhan",
+          point: 92,
+        },
+        {
+          nama: "Mumtaz",
+          point: 78,
+        },
+        {
+          nama: "Ahmad",
+          point: 88,
+        },
+        {
+          nama: "Fadly",
+          point: 95,
+        },
+      ];
+
+      // SOAL
+      // 1. Urutkan santri berdasarkan nilai dari tertinggi ke terendah
+      let point = [];
+
+      santri.sort((a, b) => {
+            return b.point - a.point
+      }).map(m => {
+            point.push(m.nama + ' = ' + m.point)
+      });
+      
+      let sIbrahim = [...santri];
+
+      document.querySelector(".demo").innerHTML += point.join(', ')
+
+      // 2. Urutkan santri berdasarkan nama secara alfabetis
+      let nameAlfabet = [];
+
+      santri.forEach((m) => {
+        nameAlfabet.push(m.nama);
+      });
+
+      document.querySelector(".demo2").innerHTML += nameAlfabet
+        .sort()
+        .join(", ");
+
+      // 3. Cari posisi santri dengan nama "MUmtaz"
+      let sMumtaz = [];
+      santri.forEach((m) => sMumtaz.push(m.nama));
+
+      let pMumtaz = sMumtaz.indexOf("Mumtaz") - 1;
+      document.querySelector(".demo3").innerHTML +=
+        "beliau ada di posisi ke-" + pMumtaz + " dari data tsb";
+        
+      // 4. Temukan semua santri dengan nilai di atas 85 dan kembalikan posisi mereka
+      let pointLebih = []; 
+
+      santri.filter((a) => {
+            return a.point > 85;
+      }).map(m => {
+            pointLebih.push(m.nama + ' = ' + m.point);
+      });
+
+      document.querySelector(".demo4").innerHTML += pointLebih.join(', ');
+      
+      // 5. Sisipkan { name: "Ibrahim", score: 80 } pada posisi ke-2
+      let sBaru = {nama: 'Ibrahim', point: 80};
+      sIbrahim.splice(1,0, sBaru);
+
+      let sFinal = [];
+      sIbrahim.forEach(m => sFinal.push(`${m.nama} = ${m.point}`));
+
+      document.querySelector(".demo5").innerHTML += sFinal.join(', ');
+
+    </script>
+  </body>
+</html>
