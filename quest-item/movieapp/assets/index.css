@@ -1,0 +1,194 @@
+    /* Container utama Nav */
+    nav {
+    background-color: #2c3e50;
+    padding: 15px;
+    text-align: center;
+    border-radius: 8px;
+    }
+
+    /* Styling untuk link (anchor) */
+    nav a {
+    text-decoration: none; 
+    color: white;
+    padding: 10px 20px;
+    margin: 0 5px;
+    font-family: Arial, sans-serif;
+    font-weight: bold;
+    transition: all 0.3s ease; /* Animasi halus saat hover */
+    border-radius: 5px;
+    }
+
+    /* Efek saat kursor di atas link */
+    nav a:hover {
+    background-color: #3498db;
+    color: #ffffff;
+    }
+
+    /* Memberi tanda pada link yang sedang aktif (opsional) */
+    nav a.active {
+    background-color: #e74c3c;
+    }
+
+        /* Styling Dasar */
+    body {
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        background-color: #f4f7f6;
+        color: #333;
+    }
+
+    /* Container Utama */
+    .card-movie {
+        background: #ffffff;
+        width: 100%;
+        margin: 5px auto;
+        max-width: 900px;
+        padding: 30px;
+        border-radius: 15px;
+        box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+    }
+
+    /* Judul dan Teks */
+    .card-movie h1 {
+        margin-bottom: 5px;
+        color: #2c3e50;
+        font-size: 2rem;
+    }
+
+    .card-movie p {
+        color: #7f8c8d;
+        margin-bottom: 25px;
+    }
+
+    .card-movie h3 {
+        border-left: 5px solid #e74c3c;
+        padding-left: 10px;
+        margin-bottom: 15px;
+        color: #2c3e50;
+    }
+
+    /* Container utama untuk memposisikan form di tengah */
+    .cari {
+        display: flex;
+        justify-content: center;
+        margin: 20px 0;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    /* Styling untuk form agar input dan tombol sejajar */
+    .form-cari {
+        display: flex;
+        width: 100%;
+        max-width: 500px; /* Batas lebar maksimal */
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        border-radius: 30px;
+        overflow: hidden;
+    }
+
+    /* Styling untuk input teks */
+    .form-cari input[type="text"] {
+        flex: 1;
+        padding: 12px 20px;
+        border: none;
+        outline: none;
+        font-size: 16px;
+        background-color: azure;
+    }
+
+    /* Styling untuk tombol "Golek!" */
+    .form-cari button {
+        padding: 12px 25px;
+        border: none;
+        background-color: #e50914; /* Warna merah ala Netflix */
+        color: white;
+        font-weight: bold;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+        font-size: 16px;
+    }
+
+    /* Efek hover pada tombol */
+    .form-cari button:hover {
+        background-color: #b20710;
+    }
+
+    /* Fokus pada input saat diklik */
+    .form-cari input[type="text"]:focus {
+        background-color: #ffffff;
+    }                                           
+
+    /* Styling Tabel */
+    table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 10px;
+        overflow: hidden;
+        border-radius: 8px;
+    }
+
+    thead {
+        background-color: #2c3e50;
+        color: #ffffff;
+        text-align: left;
+    }
+
+    th, td {
+        padding: 15px 20px;
+        border-bottom: 1px solid #eee;
+    }
+
+    /* Baris Tabel */
+    tbody tr:hover {
+        background-color: #f9f9f9;
+        transition: 0.3s;
+    }
+
+    tbody tr:last-child td {
+        border-bottom: none;
+    }
+
+    /* Mempercantik kolom 'Tonton' (Link) */
+    td:last-child {
+        color: #3498db;
+        font-weight: bold;
+    }
+
+    .link {
+        background: #e74c3c; 
+        color: white; 
+        padding: 5px 10px; 
+        border-radius: 5px; 
+        text-decoration: none; 
+        font-size: 12px;
+    }
+
+    /* Responsif untuk HP */
+    @media (max-width: 600px) {
+        .card-movie {
+            padding: 15px;
+        }
+        
+        table, thead, tbody, th, td, tr {
+            display: block;
+        }
+        
+        thead tr {
+            position: absolute;
+            top: -9999px;
+            left: -9999px;
+        }
+        
+        tr { border: 1px solid #ccc; margin-bottom: 10px; }
+        
+        td {
+            border: none;
+            position: relative;
+            padding-left: 50%;
+        }
+        
+        td:before {
+            content: attr(data-label);
+            position: absolute;
+            left: 10px;
+            font-weight: bold;
+        }
+    }
