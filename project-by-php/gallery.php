@@ -32,7 +32,7 @@
             <?php foreach($rows as $peserta) : ?>
             <tr class="tr--gallery">
                 <td class="td--gallery"><?= $i++; ?></td>
-                <td class="td--gallery"><?= $peserta["first_name"] . $peserta["last_name"]; ?></td>
+                <td class="td--gallery"><?= $peserta["first_name"] . " " . $peserta["last_name"]; ?></td>
                 <td class="td--gallery"><?= $peserta["email"]; ?></td>
                 <td class="td--gallery"><?= $peserta["blood_type"]; ?></td>
                 <td class="td--gallery"><?= $peserta["city"]; ?></td>
