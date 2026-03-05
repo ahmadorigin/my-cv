@@ -189,142 +189,239 @@
 
     /* Style untuk halaman peserta */
 
+    /* Gallery Section Styles */
     .h1--gallery {
         text-align: center;
-        color: white;
+        color: #333;
         margin: 30px 0;
         font-size: 2.5em;
-        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
-        animation: fadeInDown 1s ease;
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 2px;
+        position: relative;
+        padding-bottom: 15px;
     }
 
+    .h1--gallery::after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 100px;
+        height: 4px;
+        background: linear-gradient(90deg, #667eea, #764ba2);
+        border-radius: 2px;
+    }
+
+    /* Form Styles */
+    form {
+        text-align: center;
+        margin: 20px 0;
+    }
+
+    .btn--refresh {
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        color: white;
+        border: none;
+        padding: 12px 30px;
+        font-size: 1em;
+        font-weight: 600;
+        border-radius: 50px;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
+        text-transform: uppercase;
+        letter-spacing: 1px;
+    }
+
+    .btn--refresh:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 6px 20px rgba(102, 126, 234, 0.6);
+    }
+
+    .btn--refresh:active {
+        transform: translateY(0);
+    }
+
+    .btn--gallery {
+        background: linear-gradient(135deg, #667eea, #764ba2);
+        color: white;
+        border: none;
+        padding: 6px 12px;
+        border-radius: 20px;
+        cursor: pointer;
+        font-size: 0.9em;
+        font-weight: 500;
+        transition: all 0.3s ease;
+        width: 80px;
+        box-shadow: 0 2px 8px rgba(102, 126, 234, 0.3);
+    }
+
+    .btn--gallery:hover {
+        transform: scale(1.05);
+        box-shadow: 0 4px 12px rgba(102, 126, 234, 0.5);
+    }
+
+    /* Container Gallery */
     .container--gallery {
         max-width: 1200px;
-        margin: 0 auto;
+        margin: 30px auto;
         padding: 20px;
+        background: white;
+        border-radius: 20px;
+        box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+        overflow-x: auto;
     }
 
-    /* Style untuk tabel gallery */
+    /* Table Styles */
     .table--gallery {
         width: 100%;
+        border-collapse: collapse;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         background: white;
         border-radius: 15px;
         overflow: hidden;
-        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
-        border-collapse: separate;
-        border-spacing: 0;
-        animation: slideUp 0.8s ease;
+        box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
     }
 
-    /* Style untuk header tabel */
+    /* Table Header */
     .thead--gallery {
-        background: linear-gradient(45deg, #FF6B6B, #FF8E53);
+        background: linear-gradient(135deg, #667eea, #764ba2);
         color: white;
+    }
+
+    .tr--gallery {
+        border-bottom: 1px solid #f0f0f0;
+        transition: all 0.3s ease;
+    }
+
+    .thead--gallery .tr--gallery:hover {
+        background-color: #0f1538;
+        transform: translateY(-2px);
+        box-shadow: 0 4px 12px rgba(102, 126, 234, 0.1);
+    }
+
+    .tr--gallery:hover {
+        background-color: #f8f9ff;
+        transform: translateY(-2px);
+        box-shadow: 0 4px 12px rgba(102, 126, 234, 0.1);
     }
 
     .th--gallery {
         padding: 18px 15px;
-        font-size: 16px;
+        font-size: 1em;
         font-weight: 600;
         text-transform: uppercase;
-        letter-spacing: 1px;
-        border-bottom: 3px solid rgba(255, 255, 255, 0.3);
+        letter-spacing: 0.5px;
         text-align: left;
     }
 
-    /* Style untuk body tabel */
-    .tbody--gallery {
-        background: white;
+    .th--gallery:first-child {
+        padding-left: 25px;
     }
 
-    .tr--gallery {
-        transition: all 0.3s ease;
-        border-bottom: 1px solid #e0e0e0;
+    .th--gallery:last-child {
+        padding-right: 25px;
     }
 
-    .tr--gallery:hover {
-        background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
-        transform: scale(1.02);
-        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
-    }
-
+    /* Table Data */
     .td--gallery {
         padding: 15px;
-        color: #333;
-        font-size: 15px;
-        border-bottom: 1px solid #e0e0e0;
+        color: #555;
+        font-size: 0.95em;
+        border-bottom: 1px solid #eee;
     }
 
-    /* Style khusus untuk kolom tertentu */
     .td--gallery:first-child {
-        font-weight: 600;
-        color: #FF6B6B;
-    }
-
-    .td--gallery:nth-child(3) {
-        font-weight: 700;
-        color: #FF8E53;
+        padding-left: 25px;
     }
 
     .td--gallery:last-child {
+        padding-right: 25px;
+    }
+
+    /* Specific column styling */
+    .td--gallery:nth-child(1) {
+        /* Mobile Phone column */
+        font-weight: 600;
+        color: #333;
+    }
+
+    .td--gallery:nth-child(2) {
+        /* No column */
+        font-weight: 600;
+        color: #667eea;
+    }
+
+    .td--gallery:nth-child(3) {
+        /* Name column */
+        font-weight: 500;
+        color: #333;
+    }
+
+    .td--gallery:nth-child(4) {
+        /* Email column */
+        color: #667eea;
+        font-style: italic;
+    }
+
+    .td--gallery:nth-child(6) {
+        /* City column */
+        text-transform: capitalize;
+    }
+
+    .td--gallery:nth-child(7) {
+        /* Code Post column */
         font-family: 'Courier New', monospace;
         font-weight: 600;
     }
 
-    /* Style untuk baris ganjil genap */
-    .tbody--gallery .tr--gallery:nth-child(even) {
-        background-color: #f8f9fa;
-    }
-
-    .tbody--gallery .tr--gallery:nth-child(even):hover {
-        background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
-    }
-
-    /* Responsive design */
+    /* Responsive Design */
     @media screen and (max-width: 768px) {
-        .container {
+        .container--gallery {
             padding: 10px;
+            margin: 15px;
         }
 
-        h1 {
+        .table--gallery {
+            font-size: 0.85em;
+        }
+
+        .th--gallery,
+        .td--gallery {
+            padding: 10px 8px;
+        }
+
+        .btn--gallery {
+            width: 60px;
+            padding: 4px 8px;
+            font-size: 0.8em;
+        }
+
+        .h1--gallery {
             font-size: 2em;
         }
+    }
 
+    @media screen and (max-width: 480px) {
         .table--gallery {
             display: block;
             overflow-x: auto;
             white-space: nowrap;
         }
 
-        .th--gallery,
-        .td--gallery {
-            padding: 12px 10px;
-            font-size: 14px;
+        .btn--refresh {
+            padding: 10px 20px;
+            font-size: 0.9em;
         }
     }
 
-    @media screen and (max-width: 480px) {
-        h1 {
-            font-size: 1.5em;
-            margin: 20px 0;
-        }
-
-        .th--gallery,
-        .td--gallery {
-            padding: 10px 8px;
-            font-size: 12px;
-        }
-
-        .td--gallery:first-child {
-            min-width: 120px;
-        }
-    }
-
-    /* Animasi */
-    @keyframes fadeInDown {
+    /* Animation for table rows */
+    @keyframes fadeIn {
         from {
             opacity: 0;
-            transform: translateY(-30px);
+            transform: translateY(20px);
         }
 
         to {
@@ -333,53 +430,68 @@
         }
     }
 
-    @keyframes slideUp {
-        from {
-            opacity: 0;
-            transform: translateY(50px);
-        }
-
-        to {
-            opacity: 1;
-            transform: translateY(0);
-        }
+    .tbody--gallery .tr--gallery {
+        animation: fadeIn 0.5s ease forwards;
     }
 
-    /* Style untuk scrollbar */
-    .table--gallery::-webkit-scrollbar {
+    /* Stagger animation for rows */
+    .tbody--gallery .tr--gallery:nth-child(1) {
+        animation-delay: 0.1s;
+    }
+
+    .tbody--gallery .tr--gallery:nth-child(2) {
+        animation-delay: 0.2s;
+    }
+
+    .tbody--gallery .tr--gallery:nth-child(3) {
+        animation-delay: 0.3s;
+    }
+
+    .tbody--gallery .tr--gallery:nth-child(4) {
+        animation-delay: 0.4s;
+    }
+
+    .tbody--gallery .tr--gallery:nth-child(5) {
+        animation-delay: 0.5s;
+    }
+
+    .tbody--gallery .tr--gallery:nth-child(6) {
+        animation-delay: 0.6s;
+    }
+
+    .tbody--gallery .tr--gallery:nth-child(7) {
+        animation-delay: 0.7s;
+    }
+
+    .tbody--gallery .tr--gallery:nth-child(8) {
+        animation-delay: 0.8s;
+    }
+
+    .tbody--gallery .tr--gallery:nth-child(9) {
+        animation-delay: 0.9s;
+    }
+
+    .tbody--gallery .tr--gallery:nth-child(10) {
+        animation-delay: 1s;
+    }
+
+    /* Custom scrollbar for the table container */
+    .container--gallery::-webkit-scrollbar {
         height: 8px;
     }
 
-    .table--gallery::-webkit-scrollbar-track {
+    .container--gallery::-webkit-scrollbar-track {
         background: #f1f1f1;
-        border-radius: 10px;
+        border-radius: 4px;
     }
 
-    .table--gallery::-webkit-scrollbar-thumb {
-        background: linear-gradient(45deg, #FF6B6B, #FF8E53);
-        border-radius: 10px;
+    .container--gallery::-webkit-scrollbar-thumb {
+        background: linear-gradient(135deg, #667eea, #764ba2);
+        border-radius: 4px;
     }
 
-    .table--gallery::-webkit-scrollbar-thumb:hover {
-        background: linear-gradient(45deg, #FF8E53, #FF6B6B);
-    }
-
-    /* Style untuk menggabungkan first_name dan last_name */
-    .td--gallery:first-child {
-        text-transform: capitalize;
-    }
-
-    /* Hover effect untuk seluruh baris */
-    .tr--gallery:hover .td--gallery {
-        color: #333;
-    }
-
-    .tr--gallery:hover .td--gallery:first-child {
-        color: #FF6B6B;
-    }
-
-    .tr--gallery:hover .td--gallery:nth-child(3) {
-        color: #FF8E53;
+    .container--gallery::-webkit-scrollbar-thumb:hover {
+        background: linear-gradient(135deg, #764ba2, #667eea);
     }
     </style>
 </head>
