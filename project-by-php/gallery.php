@@ -30,11 +30,7 @@
 <h1 class="h1--gallery"><?= count($rows); ?> Peserta</h1>
 <form action="" method="get">
     <button class="btn--refresh" type="submit" name="termuda">Termuda</button>
-</form>
-<form action="" method="get">
     <button class="btn--refresh" type="submit" name="refresh">Refresh</button>
-</form>
-<form action="" method="get">
     <button class="btn--refresh" type="submit" name="tertua">Tertua</button>
 </form>
 
